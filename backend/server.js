@@ -62,7 +62,7 @@ app.get("/api/botModel", (req, res) => {
 app.get("/api/topics", (req, res) => {
   try {
     const parsedData = parseIonFile(ionFilePath);
-    const topics = getAllTopics(parsedData);
+    const topics = getAllTopics(parsedData).map((topic) => topic.topicName);
     res.json(topics);
   } catch (error) {
     console.error("Error parsing topics:", error);
@@ -71,10 +71,11 @@ app.get("/api/topics", (req, res) => {
 });
 
 // Endpoint to get a specific topic by name
-app.get("/api/topic/:name", (req, res) => {
+app.get("/api/topic/:name(*)", (req, res) => {
   try {
     const parsedData = parseIonFile(ionFilePath);
     const topic = getTopicByName(parsedData, req.params.name);
+    console.log(req.params.name, topic.messages[0].data);
     res.json(topic);
   } catch (error) {
     console.error("Error parsing topic by name:", error);

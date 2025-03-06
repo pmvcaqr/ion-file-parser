@@ -4,7 +4,7 @@ function SessionPanel() {
   const [sessionData, setSessionData] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/session")
+    fetch("http://localhost:3000/api/topic//LUVcontroller/event_notifier")
       .then((response) => response.json())
       .then((data) => setSessionData(data))
       .catch((error) => console.error("Error fetching session data:", error));
