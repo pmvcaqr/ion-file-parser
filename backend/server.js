@@ -100,7 +100,6 @@ app.get("/api/topicVideo", (req, res) => {
           "output_image.jpg"
         );
 
-        console.log("processedImage", processedImage);
         return {
           ...message,
           data: {

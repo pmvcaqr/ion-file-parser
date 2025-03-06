@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import "../App.css"; // Import the combined CSS file
 
-function PlaybackControl({ messages }) {
-  console.log("PlaybackControl", messages);
-
+function PlaybackControl({ messages, onReset }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -22,7 +21,6 @@ function PlaybackControl({ messages }) {
     Math.max(duration, 1000)
   );
 
-  // Normalize durations to ensure each is at least 1 second
   const totalPlaybackTime = normalizedDurations.reduce(
     (sum, duration) => sum + duration,
     0
@@ -33,28 +31,40 @@ function PlaybackControl({ messages }) {
       playbackRef.current = setInterval(() => {
         setElapsedTime((prevTime) => {
           const newTime = prevTime + 1000 / playbackSpeed;
-          if (newTime >= totalPlaybackTime) {
-            clearInterval(playbackRef.current);
-            return totalPlaybackTime;
-          }
-          return newTime;
+          return newTime >= totalPlaybackTime ? totalPlaybackTime : newTime;
         });
 
-        setCurrentMessageIndex((prevIndex) => {
-          const nextIndex = prevIndex + 1;
-          if (nextIndex >= messages.length) {
-            clearInterval(playbackRef.current);
-            return prevIndex;
+        // Update currentMessageIndex based on elapsedTime
+        let cumulativeTime = 0;
+        for (let i = 0; i < normalizedDurations.length; i++) {
+          cumulativeTime += normalizedDurations[i] / playbackSpeed;
+          if (elapsedTime < cumulativeTime) {
+            setCurrentMessageIndex(i);
+            break;
           }
-          return nextIndex;
-        });
-      }, normalizedDurations[currentMessageIndex] / playbackSpeed);
+        }
+      }, 1000 / playbackSpeed);
+
+      return () => {
+        clearInterval(playbackRef.current);
+      };
     } else {
       clearInterval(playbackRef.current);
     }
+  }, [
+    isPlaying,
+    playbackSpeed,
+    elapsedTime,
+    normalizedDurations,
+    totalPlaybackTime,
+  ]);
 
-    return () => clearInterval(playbackRef.current);
-  }, [isPlaying, playbackSpeed, currentMessageIndex, normalizedDurations]);
+  useEffect(() => {
+    // Reset playback when messages change
+    setIsPlaying(false);
+    setCurrentMessageIndex(0);
+    setElapsedTime(0);
+  }, [messages]);
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -67,13 +77,30 @@ function PlaybackControl({ messages }) {
   const currentMessage = messages[currentMessageIndex];
 
   return (
-    <div>
+    <div className="playbackControlContainer">
       <h3>Playback Control</h3>
-      <button onClick={togglePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+      <button className="playbackControlButton" onClick={togglePlayPause}>
+        {isPlaying ? "Pause" : "Play"}
+      </button>
       <div>
-        <button onClick={() => changeSpeed(1)}>1x</button>
-        <button onClick={() => changeSpeed(2)}>2x</button>
-        <button onClick={() => changeSpeed(5)}>5x</button>
+        <button
+          className="playbackControlButton"
+          onClick={() => changeSpeed(1)}
+        >
+          1x
+        </button>
+        <button
+          className="playbackControlButton"
+          onClick={() => changeSpeed(2)}
+        >
+          2x
+        </button>
+        <button
+          className="playbackControlButton"
+          onClick={() => changeSpeed(5)}
+        >
+          5x
+        </button>
       </div>
       <progress
         value={elapsedTime}

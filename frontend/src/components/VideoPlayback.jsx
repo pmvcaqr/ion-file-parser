@@ -47,6 +47,10 @@ function VideoPlayback() {
   const currentFrame = frames[currentFrameIndex];
   const imageUrl = currentFrame ? currentFrame.data : null;
 
+  if (!imageUrl) {
+    return null;
+  }
+
   return (
     <div>
       <h2>Video Playback</h2>

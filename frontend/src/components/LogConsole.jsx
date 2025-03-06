@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../App.css"; // Import the combined CSS file
 
 function LogConsole() {
   const [messages, setMessages] = useState([]);
@@ -20,7 +21,7 @@ function LogConsole() {
   );
 
   return (
-    <div>
+    <div className="logConsoleContainer">
       <h2>Log Console</h2>
       <input
         type="text"
@@ -31,14 +32,11 @@ function LogConsole() {
       />
       <div style={{ maxHeight: "400px", overflowY: "auto" }}>
         {filteredMessages.map((message, index) => (
-          <div key={index} style={{ marginBottom: "10px" }}>
-            <p>
-              <strong>Timestamp:</strong>{" "}
+          <div key={index} className="logMessage">
+            <p className="logTimestamp">
               {new Date(message.timestamp).toLocaleString()}
             </p>
-            <p>
-              <strong>Message:</strong> {message.data.msg}
-            </p>
+            <p className="logText">{message.data.msg}</p>
           </div>
         ))}
       </div>

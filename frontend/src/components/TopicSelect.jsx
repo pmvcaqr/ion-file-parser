@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../App.css"; // Import the combined CSS file
 import PlaybackControl from "./PlaybackControl";
 
 function TopicSelect() {
@@ -19,14 +20,20 @@ function TopicSelect() {
 
     fetch(`http://localhost:3000/api/topic/${topicName}`)
       .then((response) => response.json())
-      .then((data) => setMessages(data.messages))
+      .then((data) => {
+        setMessages(data.messages);
+      })
       .catch((error) => console.error("Error fetching topic messages:", error));
   };
 
   return (
-    <div>
-      <h2>Select a Topic</h2>
-      <select onChange={handleTopicChange} value={selectedTopic || ""}>
+    <div className="topicSelectContainer">
+      <h2 className="topicSelectHeading">Select a Topic</h2>
+      <select
+        className="topicSelect"
+        onChange={handleTopicChange}
+        value={selectedTopic || ""}
+      >
         <option value="" disabled>
           Select a topic
         </option>
@@ -36,7 +43,9 @@ function TopicSelect() {
           </option>
         ))}
       </select>
-      {messages.length > 0 && <PlaybackControl messages={messages} />}
+      {messages.length > 0 && (
+        <PlaybackControl messages={messages} onReset={() => setMessages([])} />
+      )}
     </div>
   );
 }

@@ -1,8 +1,17 @@
 // ionParser.js
 const ion = require("ion-js");
+const fs = require("fs");
+
+// Cache object to store parsed data
+const cache = {};
 
 function parseIonFile(filePath) {
-  const fs = require("fs");
+  // Check if the file has already been parsed and cached
+  if (cache[filePath]) {
+    console.log("Returning cached data for:", filePath);
+    return cache[filePath];
+  }
+
   const ionData = fs.readFileSync(filePath);
   const reader = ion.makeReader(ionData);
   const result = {};
@@ -21,7 +30,9 @@ function parseIonFile(filePath) {
 
     reader.stepOut(); // Step out of the struct
 
-    // Print the struct
+    // Cache the parsed result
+    cache[filePath] = result;
+
     console.log("Parsed Success");
   } else {
     console.error("Could not parse file.");
@@ -44,14 +55,6 @@ function parseValue(reader) {
       return parseList(reader);
     case ion.IonTypes.STRUCT:
       return parseStruct(reader);
-    case ion.IonTypes.BLOB:
-      const blob = reader.value(); // Get the byte array
-      return Buffer.from(blob).toString("base64"); // Convert to base64 string
-
-      return blob;
-      // case ion.IonTypes.CLOB:
-      //   return reader.stringValue(); // Handle CLOB as string
-      return "";
     default:
       return reader.value();
   }
@@ -106,7 +109,6 @@ function getAllTopics(parsedData) {
 function getTopicByName(parsedData, topicName) {
   const topic =
     parsedData.topics?.find((topic) => topic.topicName === topicName) || null;
-  console.log("topic", topic);
   return topic;
 }
 

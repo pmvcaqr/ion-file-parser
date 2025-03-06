@@ -1,3 +1,6 @@
+/* App.css */
+
+/* Global Styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +42,69 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* TopicSelect Styles */
+.topicSelectContainer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4d4d4d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.topicSelectHeading {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.topicSelect {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+/* PlaybackControl Styles */
+.playbackControlContainer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4d4d4d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.playbackControlButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* LogConsole Styles */
+.logConsoleContainer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4d4d4d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logMessage {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.logTimestamp {
+  flex: 0 0 30%;
+  font-weight: bold;
+}
+
+.logText {
+  flex: 1;
+  padding-left: 10px;
 }

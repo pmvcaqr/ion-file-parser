@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { JsonEditor, githubDarkTheme } from "json-edit-react";
 
 function RobotPanel() {
-  const [robotData, setRobotData] = useState({});
+  const [robotData, setRobotData] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/robot")
@@ -10,10 +11,20 @@ function RobotPanel() {
       .catch((error) => console.error("Error fetching robot data:", error));
   }, []);
 
+  if (!robotData) {
+    return null;
+  }
+
   return (
     <div>
       <h2>Robot Information</h2>
-      <pre>{JSON.stringify(robotData, null, 2)}</pre>
+      <JsonEditor
+        collapse={true}
+        data={robotData}
+        viewOnly={true}
+        rootName="robotData"
+        theme={githubDarkTheme}
+      />
     </div>
   );
 }

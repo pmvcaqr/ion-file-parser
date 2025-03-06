@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { JsonEditor, githubDarkTheme } from "json-edit-react";
 
 function SessionPanel() {
-  const [sessionData, setSessionData] = useState({});
+  const [sessionData, setSessionData] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/topic//LUVcontroller/event_notifier")
@@ -10,10 +11,20 @@ function SessionPanel() {
       .catch((error) => console.error("Error fetching session data:", error));
   }, []);
 
+  if (!sessionData) {
+    return null;
+  }
+
   return (
     <div>
       <h2>Session Information</h2>
-      <pre>{JSON.stringify(sessionData, null, 2)}</pre>
+      <JsonEditor
+        collapse={true}
+        data={sessionData}
+        viewOnly={true}
+        rootName="sessionData"
+        theme={githubDarkTheme}
+      />
     </div>
   );
 }
