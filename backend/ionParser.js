@@ -45,9 +45,13 @@ function parseValue(reader) {
     case ion.IonTypes.STRUCT:
       return parseStruct(reader);
     case ion.IonTypes.BLOB:
-      return ""; // Handle BLOB as byte array
-    case ion.IonTypes.CLOB:
-      return ""; // Handle CLOB as string
+      const blob = reader.value(); // Get the byte array
+      return Buffer.from(blob).toString("base64"); // Convert to base64 string
+
+      return blob;
+      // case ion.IonTypes.CLOB:
+      //   return reader.stringValue(); // Handle CLOB as string
+      return "";
     default:
       return reader.value();
   }
@@ -100,9 +104,10 @@ function getAllTopics(parsedData) {
 
 // Function to retrieve a specific topic by topicName
 function getTopicByName(parsedData, topicName) {
-  return (
-    parsedData.topics?.find((topic) => topic.topicName === topicName) || null
-  );
+  const topic =
+    parsedData.topics?.find((topic) => topic.topicName === topicName) || null;
+  console.log("topic", topic);
+  return topic;
 }
 
 // Function to retrieve a specific topic with a topicType "sensor_msgs/CompressedImage"

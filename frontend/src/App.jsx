@@ -4,6 +4,7 @@ import RobotPanel from "./components/RobotPanel";
 import "./App.css";
 import TopicSelect from "./components/TopicSelect";
 import LogConsole from "./components/LogConsole";
+import VideoPlayback from "./components/VideoPlayback";
 function App() {
   return (
     <div>
@@ -11,7 +12,8 @@ function App() {
       {/* <SessionPanel /> */}
       {/* <RobotPanel /> */}
       {/* <TopicSelect /> */}
-      <LogConsole />
+      {/* <LogConsole /> */}
+      <VideoPlayback />
     </div>
   );
 }

@@ -9,6 +9,8 @@ const {
   getTopicByName,
   getTopicByType,
 } = require("./ionParser");
+const { getBase64Image, processROSCompressedImage } = require("./helper");
+
 const app = express();
 const PORT = 3000;
 
@@ -75,7 +77,40 @@ app.get("/api/topic/:name(*)", (req, res) => {
   try {
     const parsedData = parseIonFile(ionFilePath);
     const topic = getTopicByName(parsedData, req.params.name);
-    console.log(req.params.name, topic.messages[0].data);
+    res.json(topic);
+  } catch (error) {
+    console.error("Error parsing topic by name:", error);
+    res.status(500).json({ error: "Failed to parse topic by name" });
+  }
+});
+
+// Endpoint to get a image collections
+app.get("/api/topicVideo", (req, res) => {
+  try {
+    const parsedData = parseIonFile(ionFilePath);
+    const topic = getTopicByName(
+      parsedData,
+      "/usb_cam/image_raw/compressed_throttle"
+    );
+
+    if (topic && topic.messages) {
+      topic.messages = topic.messages.map((message) => {
+        const processedImage = processROSCompressedImage(
+          message.data.data,
+          "output_image.jpg"
+        );
+
+        console.log("processedImage", processedImage);
+        return {
+          ...message,
+          data: {
+            ...message.data,
+            data: processedImage.dataUrl,
+          },
+        };
+      });
+    }
+
     res.json(topic);
   } catch (error) {
     console.error("Error parsing topic by name:", error);
