@@ -1,0 +1,321 @@
+{
+  metadata: {
+    compressionMethod: 'gzip',
+    compressedTypes: [
+      'sensor_msgs/PointCloud2',
+      'sensor_msgs/LaserScan',
+      'nav_msgs/OccupancyGrid',
+      'map_msgs/OccupancyGridUpdate',
+      'sensor_msgs/PointCloud'
+    ],
+    botInfo: {
+      botID: '9dd0cbe1ec798e6e3f35499526b234c055bc60effbf848df3ce8de2ea7e7f208',
+      botName: 'OhmniClean 006',
+      enterpriseName: 'OhmniLabs ',
+      enterpriseID: '5ab0bf3a6ef2c75b55ee1af5',
+      siteID: null,
+      mapID: '0f1a9dc5-8ab5-4874-ab7c-c9d5e3fcee39',
+      mapVersionID: null,
+      releaseTrack: 'ohmniclean-staging',
+      amrVersion: '1.1.22',
+      apkVersion: '1.2.9.3-amr-2-g815294bda-dirty',
+      server: 'https://app.ohmnilabs.com',
+      autonomyServer: null
+    },
+    sessionInfo: {
+      sessionCode: '5t6DwT',
+      session_id: '20250221T024529',
+      start_time: '2025-02-21T02:45:29',
+      end_time: '2025-02-21T02:47:51',
+      duration: 142000,
+      local_start_time: '2025-02-21T09:45:29',
+      uptime: 346.02,
+      apk_version: '1.2.9.3-amr-2-g815294bda-dirty',
+      amr_version: '1.1.22',
+      rosbag_log_level: 'default',
+      operator_id: '',
+      operator_name: 'Demo User',
+      map_id: '0f1a9dc5-8ab5-4874-ab7c-c9d5e3fcee39',
+      map_name: 'OfficeTest',
+      is_old_map: false,
+      lidar_model: '113 (S2M1 Rev. 18)',
+      lidar_fw: '1.1',
+      lidar_scan_mode: 'Standard',
+      depthcam_fw: '05.12.14.50',
+      depthcam_sdk: 'LibRealsense 2.43.0',
+      depthcam_ros: '2.2.23',
+      path_type: 'pp',
+      motion_test: false,
+      one_spot_cleaning: false,
+      dosing_modifier: 1,
+      estimated_time: 137145.64834559071,
+      total_path_length: 12.714564834559068,
+      result_id: 0,
+      result: 'Fully succeeded',
+      total_keypoints: 0,
+      reached_keypoints: [],
+      missed_keypoints: [],
+      kp_success_rate: 1,
+      completeness: 1,
+      semantic_result: 'SUCCESS',
+      details: [Array],
+      events: [],
+      sessionType: 'uv_cleaning'
+    },
+    botConfig: {
+      BOTTYPE: 'luvbot_dvt',
+      LIDAR_MODEL: 'S2',
+      LIDAR_ON_BASE: true,
+      ENABLE_IMU: false,
+      TBCONTROL_DEVICE: '/dev/usb/tty1-2.1',
+      LIDAR_DEVICE: '/dev/usb/tty1-3:1.0',
+      RGB_PORT: '/dev/usb/video4linux1-4:1.3',
+      RFIDREADER_PORT: '/dev/usb/tty1-2.3',
+      IMU_DEVICE: '/dev/i2c-1',
+      WAPP_CLIENT_PORT: 3000,
+      WAPP_API_PORT: 3001,
+      ENABLE_ROSBAG: true,
+      ROSBAG_LOG_LEVEL: 'default',
+      ENABLE_WEBVIZ: false,
+      ENABLE_SNAPSHOT: true,
+      ENABLE_ADJTIMEX_FREQUENCY_QUERY: true,
+      ENABLE_TEB_FEEDBACK: true,
+      SYSTEM_STATS_FREQ: 0.2,
+      SD_STATUS_PUBLISH_INTERVAL_MS: 5000,
+      ADJTIMEX_FREQUENCY_QUERY_INTERVAL_MS: 5000,
+      ENABLE_CLEAR_NOISE_ON_PATH: true,
+      ENABLE_NARROW_GAP_CHECK: true,
+      ENABLE_MAPPING_ASSIST: true,
+      PATH_TYPE: 'pp',
+      ENABLE_FUSION: false,
+      ENABLE_AMCL_ENLARGE_SEARCH: true,
+      IMU_MODE: 'NDOF',
+      IMU_ODOM: false,
+      IMU_TILT_DETECT: false,
+      WARMUP_TIME: 0,
+      FOLLOW_SPEED: 0.1,
+      CLEAN_PROXIMITY: true,
+      DEPTHCAM_TIME_CHECK: 10,
+      ENABLE_SIM: false,
+      ENABLE_TB_AUTONOMY: false,
+      ENABLE_TB_COLLISION_DETECTION: false,
+      ENABLE_UV_ENGINE_DEV: false,
+      ROS_DEBUG: false
+    },
+    mapMetadata: {
+      map_load_time: 1740105891.0294118,
+      resolution: 0.05000000074505806,
+      width: 449,
+      height: 307,
+      origin: [Object]
+    },
+    mapData: { format: 'nav_msgs/OccupancyGrid', data: '' },
+    botModel: { format: 'obj', filename: 'luv_bot.simplified.obj', data: '' }
+  },
+  topics: [
+    {
+      topicName: '/LUVcontroller/event_notifier',
+      topicType: 'luv_mission_control_msgs/LUV_Notifier',
+      frequency: 1.5611011031874824,
+      messages: [Array]
+    },
+    {
+      topicName: '/LUVcontroller/feedback',
+      topicType: 'luv_mission_control_msgs/LUVControllerActionFeedback',
+      frequency: 0.9999852182665986,
+      messages: [Array]
+    },
+    {
+      topicName: '/amcl_pose',
+      topicType: 'geometry_msgs/PoseWithCovarianceStamped',
+      frequency: 1.676095117298174,
+      messages: [Array]
+    },
+    {
+      topicName: '/cpu_monitor/cpu_temp',
+      topicType: 'std_msgs/Float32',
+      frequency: 0.986312322296168,
+      messages: [Array]
+    },
+    {
+      topicName: '/cpu_monitor/total_cpu',
+      topicType: 'std_msgs/Float32',
+      frequency: 0.9858506370603849,
+      messages: [Array]
+    },
+    {
+      topicName: '/cpu_monitor/total_used_mem',
+      topicType: 'std_msgs/UInt64',
+      frequency: 0.9862439057883196,
+      messages: [Array]
+    },
+    {
+      topicName: '/luv_controller/keypoints',
+      topicType: 'geometry_msgs/PoseArray',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/luv_controller/loaded_path',
+      topicType: 'geometry_msgs/PoseArray',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/luv_controller/rejoin_pose',
+      topicType: 'geometry_msgs/PoseStamped',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/map_metadata',
+      topicType: 'nav_msgs/MapMetaData',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/GlobalPlanner/goal_footprint',
+      topicType: 'visualization_msgs/Marker',
+      frequency: 0.9997494848469319,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/GlobalPlanner/plan',
+      topicType: 'nav_msgs/Path',
+      frequency: 0.9997348296647067,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/TebLocalPlannerROS/local_plan',
+      topicType: 'nav_msgs/Path',
+      frequency: 9.989149435799241,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/TebLocalPlannerROS/teb_feedback',
+      topicType: 'teb_local_planner/FeedbackMsg',
+      frequency: 9.98924459729162,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/TebLocalPlannerROS/teb_markers',
+      topicType: 'visualization_msgs/Marker',
+      frequency: 10433.592039800995,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/TebLocalPlannerROS/teb_poses',
+      topicType: 'geometry_msgs/PoseArray',
+      frequency: 9.987389275169063,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/global_costmap/costmap',
+      topicType: 'nav_msgs/OccupancyGrid',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/global_costmap/costmap_updates',
+      topicType: 'map_msgs/OccupancyGridUpdate',
+      frequency: 0.6705538062841078,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/global_costmap/map_boundary',
+      topicType: 'geometry_msgs/PolygonStamped',
+      frequency: 1.999113476022386,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/local_costmap/costmap',
+      topicType: 'nav_msgs/OccupancyGrid',
+      frequency: 2.6490145862083123,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/local_costmap/costmap_updates',
+      topicType: 'map_msgs/OccupancyGridUpdate',
+      frequency: 0.8886128094188673,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/local_costmap/footprint',
+      topicType: 'geometry_msgs/PolygonStamped',
+      frequency: 8.000549354127404,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/local_costmap/map_boundary',
+      topicType: 'geometry_msgs/PolygonStamped',
+      frequency: 8.001129309785698,
+      messages: [Array]
+    },
+    {
+      topicName: '/move_base/local_costmap/rgbd_obstacle_layer/voxel_grid_throttle',
+      topicType: 'sensor_msgs/PointCloud2',
+      frequency: 0.895663606811248,
+      messages: [Array]
+    },
+    {
+      topicName: '/path_recording/actual_path',
+      topicType: 'nav_msgs/Path',
+      frequency: null,
+      messages: [Array]
+    },
+    {
+      topicName: '/rosout_agg',
+      topicType: 'rosgraph_msgs/Log',
+      frequency: 221.95607768428852,
+      messages: [Array]
+    },
+    {
+      topicName: '/scan_throttle',
+      topicType: 'sensor_msgs/LaserScan',
+      frequency: 3.477123034311925,
+      messages: [Array]
+    },
+    {
+      topicName: '/tb_cmd_vel',
+      topicType: 'geometry_msgs/Twist',
+      frequency: 9.989101855732958,
+      messages: [Array]
+    },
+    {
+      topicName: '/tb_control/wheel_odom',
+      topicType: 'nav_msgs/Odometry',
+      frequency: 61.93139904023625,
+      messages: [Array]
+    },
+    {
+      topicName: '/tb_node/safety_device_status_array',
+      topicType: 'diagnostic_msgs/DiagnosticArray',
+      frequency: 0.1999997234348307,
+      messages: [Array]
+    },
+    {
+      topicName: '/tb_node/yaw',
+      topicType: 'std_msgs/Float32',
+      frequency: 61.80136294986555,
+      messages: [Array]
+    },
+    {
+      topicName: '/tf',
+      topicType: 'tf2_msgs/TFMessage',
+      frequency: 62.54833947238916,
+      messages: [Array]
+    },
+    {
+      topicName: '/tf_static',
+      topicType: 'tf2_msgs/TFMessage',
+      frequency: 155344.59259259258,
+      messages: [Array]
+    },
+    {
+      topicName: '/usb_cam/image_raw/compressed_throttle',
+      topicType: 'sensor_msgs/CompressedImage',
+      frequency: 0.9975888593050943,
+      messages: [Array]
+    }
+  ]
+}
