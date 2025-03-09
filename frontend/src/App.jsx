@@ -15,13 +15,23 @@ function App() {
   ) : (
     <ErrorBoundary>
       <div>
-        <h1>ION Data Viewer</h1>
-        <SessionPanel />
-        {/* <RobotPanel />
-      <TopicSelect />
-      <LogConsole />
-      <VideoPlayback /> */}
-        <RobotView />
+        <h1 className="app-title">ION Data Viewer</h1>
+
+        <div className="app-container">
+          {/* Left column - 1/3 width */}
+          <div className="left-column">
+            <SessionPanel />
+            <RobotPanel />
+            <TopicSelect />
+          </div>
+
+          {/* Right column - 2/3 width */}
+          <div className="right-column">
+            <LogConsole />
+            <VideoPlayback />
+            <RobotView />
+          </div>
+        </div>
       </div>
     </ErrorBoundary>
   );

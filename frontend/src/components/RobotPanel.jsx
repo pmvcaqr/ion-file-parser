@@ -16,8 +16,8 @@ function RobotPanel() {
   }
 
   return (
-    <div>
-      <h2>Robot Information</h2>
+    <div className="topicSelectContainer">
+      <h2 className="topicSelectHeading">Robot Information</h2>
       <JsonEditor
         collapse={true}
         data={robotData}

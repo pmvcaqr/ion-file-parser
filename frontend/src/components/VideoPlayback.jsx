@@ -47,17 +47,24 @@ function VideoPlayback() {
   const currentFrame = frames[currentFrameIndex];
   const imageUrl = currentFrame ? currentFrame.data : null;
 
-  if (!imageUrl) {
-    return null;
-  }
+  //   if (!imageUrl) {
+  //     return null;
+  //   }
 
   return (
-    <div>
-      <h2>Video Playback</h2>
+    <div className="topicSelectContainer">
+      <h2 className="topicSelectHeading">Video Playback</h2>
       <button onClick={togglePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
       <div>
         {imageUrl && (
-          <img src={imageUrl} alt="Camera View" style={{ width: "100%" }} />
+          <img
+            src={imageUrl}
+            alt="Camera View"
+            style={{ width: "100%" }}
+            onError={(err) => {
+              console.log("img error", err);
+            }}
+          />
         )}
       </div>
     </div>

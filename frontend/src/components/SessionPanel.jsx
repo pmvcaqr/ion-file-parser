@@ -16,8 +16,8 @@ function SessionPanel() {
   }
 
   return (
-    <div>
-      <h2>Session Information</h2>
+    <div className="topicSelectContainer">
+      <h2 className="topicSelectHeading">Session Information</h2>
       <JsonEditor
         collapse={true}
         data={sessionData}

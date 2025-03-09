@@ -96,8 +96,6 @@ function RobotView() {
           ),
         }));
 
-        console.log("mappedData", mappedData);
-
         setPositionData(mappedData);
       })
       .catch((error) => console.error("Error fetching position data:", error));

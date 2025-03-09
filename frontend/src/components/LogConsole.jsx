@@ -21,14 +21,14 @@ function LogConsole() {
   );
 
   return (
-    <div className="logConsoleContainer">
-      <h2>Log Console</h2>
+    <div className="topicSelectContainer">
+      <h2 className="topicSelectHeading">Log Console</h2>
       <input
         type="text"
         placeholder="Filter messages"
         value={filterText}
         onChange={handleFilterChange}
-        style={{ width: "100%", marginBottom: "10px" }}
+        style={{ width: "90%", marginBottom: "10px" }}
       />
       <div style={{ maxHeight: "400px", overflowY: "auto" }}>
         {filteredMessages.map((message, index) => (

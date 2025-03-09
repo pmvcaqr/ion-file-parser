@@ -5,9 +5,9 @@ const fs = require("fs");
 // Cache object to store parsed data
 const cache = {};
 
-function parseIonFile(filePath) {
+function parseIonFile(filePath, noCache = false) {
   // Check if the file has already been parsed and cached
-  if (cache[filePath]) {
+  if (cache[filePath] && !noCache) {
     console.log("Returning cached data for:", filePath);
     return cache[filePath];
   }

@@ -87,7 +87,7 @@ app.get("/api/topic/:name(*)", (req, res) => {
 // Endpoint to get a image collections
 app.get("/api/topicVideo", (req, res) => {
   try {
-    const parsedData = parseIonFile(ionFilePath);
+    const parsedData = parseIonFile(ionFilePath, true);
     const topic = getTopicByName(
       parsedData,
       "/usb_cam/image_raw/compressed_throttle"
@@ -103,7 +103,6 @@ app.get("/api/topicVideo", (req, res) => {
         return {
           ...message,
           data: {
-            ...message.data,
             data: processedImage.dataUrl,
           },
         };
